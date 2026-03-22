@@ -24,13 +24,19 @@ mongoose.connect("mongodb+srv://jk825405jay_db_user:Jay12345@cluster0.m1ouglq.mo
 const trySchema = new mongoose.Schema({
     username: String,
     email: String,
-    password: String
+    password: String,
+    
 });
-// jk825405jay_db_user
-const item = mongoose.model("second", trySchema);
+
 // BcYNFdeVLLimGock
 // mongodb+srv://jk825405jay_db_user:Y1b3QHc1VI7w2Uhw@cluster0.qduspak.mongodb.net/
 //App. uses
+// jk825405jay_db_user
+
+
+const item = mongoose.model("second", trySchema);
+
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -45,9 +51,6 @@ app.use(session({
         secure: false
     }
 }));
-
-
-
 
 
 //This is take the login-signup
@@ -100,11 +103,11 @@ app.get("/logout", (req,res)=>{
             return res.redirect("/home");
             
         }else{
-            
+            // return res.redirect("/?error=wrongpassword");
         res.send(`Wrong Password..
             <script>
                 setTimeout(() => {
-                    window.location= "/signup";
+                    window.location= "/";
                 }, 1500);
             </script>`); 
             
@@ -117,11 +120,102 @@ app.get("/logout", (req,res)=>{
         
     });
 
-app.get('/home', (req, res)=>{
+app.get('/home', async (req, res)=>{
     if(!req.session.userId){
         return res.redirect("/")
+    }else{
+        try{
+            const userData = await homeValue.find({
+                userId : req.session.userId
+            });
+
+            res.render("home" , {data : userData, showUpdate: false});
+        }catch(err){
+            console.log(err);
+        }
+
     }
 
-    res.render("home");
 });
+
+
+
+
+
+// Home Part Backend
+
+
+//homeSchema
+const homeSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "second"
+    },
+    textinputData : String,
+    CreatedAt : {
+        type: Date,
+        default: Date.now
+    }
+});
+
+const homeValue = mongoose.model("homeData", homeSchema);
+
+
+//textDataRouting
+app.post("/textData" , async (req, res)=>{
+    if(!req.session.userId){
+        res.redirect("/");
+    }
+   try{
+     const hometextInputData = new homeValue({
+       userId : req.session.userId,
+       textinputData : req.body.text,
+
+    });
+    await hometextInputData.save();
+    res.redirect("/home");
+
+   }catch(err){
+    console.log(err);
+   }
+
+
+     
+});
+
+
+app.get('/edithome/:id', async(req, res)=>{
+    const id = req.params.id;
+
+    const userData = await homeValue.find({
+        userId: req.session.userId,
+    });
+    res.render("home", {
+        data: userData,
+        showUpdate: true,
+        editId: id
+    });
+});
+
+app.post("/updateData/:editid", async(req, res)=>{
+    const id = req.params.editid;
+    const updateData = req.body.updateDatatext;
+
+    try{
+        await homeValue.findByIdAndUpdate(id , {
+            textinputData: updateData,
+        });
+        res.redirect("/home");
+    }catch (err){
+        console.log(err);      
+    }
+});
+
+app.get('/deletehome/:id', async(req,res) =>{
+    const id = req.params.id;
+    await homeValue.findByIdAndDelete(id);
+    res.redirect("/home");
+
+});
+
 

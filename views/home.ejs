@@ -1,321 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food ording App</title>
-    <link rel="stylesheet" href="css/homeStyle.css" />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/quieres.css">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-      
-    
-    <script>
-    $(document).ready(function(){
-      // Add smooth scrolling to all links
-      AOS.init();
-      $("a").on('click', function(event) {
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="/css/home.css">
+  <title>Home page</title>
 
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-          // Prevent default anchor click behavior
-          event.preventDefault();
+</head>
 
-          // Store hash
-          var hash = this.hash;
+<body>
+  <div class="logout-menu">
+    <a href="/logout" class="logout">Logout<ion-icon name="log-out-outline"  class="logout-icon" ></ion-icon></a>
+  </div>
+  <div class="paragraph">
+      <p>Type your secrect here</p>
+  </div>
 
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 800, function(){
-
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-          });
-        } // End if
-      });
-    });
-    </script>
-
-  </head>
-  <body>
-    <header >
-      <nav>
-        <div class="navigation-section">
-          <img class="logo" src="images/logo.png" alt="logo" />
-          <p>Apan bhojnalay</p>
-          <ul class="main-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Order menu</a></li>
-            <li><a href="/">LogIn/signup</a></li>
-            <li><a href="/logout" ><ion-icon name="exit"></ion-icon></a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <div class="header-container">
-        <h1>
-          Your meal are her <br/>
-          Order now!
-        </h1>
-        <li><a class="btn btn-first" href="#">Click for meal</a></li>
-        <li><a class="btn btn-second" href="#">Show more</a></li>
-      </div>
-    </header>
-
-    <section class="feature-section">
-      <div class="food-description">
-        <h2 class="food-description-heading">Healthy Eats ,Happy Mind</h2>
-        <p class="long-food-description">Discover vibrant meals packed with nutrients to boost your focus and energy, crafted for every moment of your day.
-        </p>
-      </div>
-
-      <div class="food-description food-description-portion">
-        <div class="row 1-of-4-col box">
-          <ion-icon class="icon" name="infinite-outline"></ion-icon>
-          <h3>Fresh Daily Meal</h3>
-          <p>Enjoy meals with fresh ingredients like walnuts and spinach daily, delivering omega-3s and antioxidants for a sharper mind.</p>
-        </div>
-
-        <div class="row 1-of-4-col box">
-          <ion-icon class="icon"  name="cart-outline"></ion-icon>
-          <h3>Easy Ordering</h3>
-          <p>Order mood-boosting dishes with lentils and berries anytime, packed with B vitamins to keep your focus and spirits high.</p>
-        </div>
-
-        <div class="row 1-of-4-col box">
-          <ion-icon class="icon"  name="restaurant-outline"></ion-icon>
-          <h3>Pure Ingredients</h3>
-          <p>Savor 100% natural, organic foods like turmeric-spiced quinoa, promoting brain health and sustainable living</p>
-        </div>
-
-        <div class="row 1-of-4-col box">
-          <ion-icon class="icon"  name="alarm-outline"></ion-icon>
-          <h3>Ready in 25 min</h3>
-          <p>Whip up delicious, brain-healthy meals like salmon bowls in just 20-25 minutes to save time and energize your day.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="meal-section" data-aos="fade-up" data-aos-duration="4000">
-      <h3 class="meal-section-h3">Meals</h3>
-      <ul class="meal-showcase">
-        <li>
-          <figure class="meal-img">
-            <img src="images/meal_1.jpg" alt="meal">
-          </figure>
-        </li>
-        <li>
-          <figure class="meal-img">
-            <img src="images/meal_2.jpg" alt="meal">
-          </figure>
-        </li>
-        <li>
-          <figure class="meal-img">
-            <img src="images/meal_3.jpg" alt="meal">
-          </figure>
-        </li>
-        <li>
-          <figure class="meal-img">
-            <img src="images/meal_4.jpg" alt="meal">
-          </figure>
-        </li>
-      </ul>
-
-      <ul class="meal-showcase">
-        <li>
-          <figure class="meal-img">
-            <img src="images/meal_5.jpg" alt="meal">
-          </figure>
-        </li>
-        <li>
-          <figure class="meal-img">
-            <img src="images/meal_6.jpg" alt="meal">
-          </figure>
-        </li>
-        <li>
-          <figure class="meal-img">
-            <img src="images/meal_7.jpg" alt="meal">
-          </figure>
-        </li>
-        <li>
-          <figure class="meal-img">
-            <img src="images/meal_8.jpg" alt="meal">
-          </figure>
-        </li>
-      </ul>
-    </section>
-    
-    <!-- City Section -->
-    <section class="city-section" data-aos="fade-up" data-aos-duration="4000">
-        <div class="city-feature">
-            <h3>We Are Currently In These Cities</h3>
-        </div>
-        <div class="city-feature city-feature-part-1">
-            <div class="city-container">
-                <img src="images//City_1.jpg" alt="City_1">
-                <h4>Delhi</h4>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="fast-food-outline"></ion-icon> 6500+ happy users
-                </div>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="beer-outline"></ion-icon> 65+ chefs
-                </div>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="logo-twitter"></ion-icon><a href="#">omnifood_tw</a>
-                </div>
-            </div>
-
-            <div class="city-container">
-                <img src="images//City_2.jpg" alt="City_2">
-                <h4>Maharashtra</h4>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="fast-food-outline"></ion-icon> 6500+ happy users
-                </div>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="beer-outline"></ion-icon> 65+ chefs
-                </div>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="logo-twitter"></ion-icon><a href="#">omnifood_tw</a>
-                </div>
-            </div>
-
-            <div class="city-container">
-                <img src="images/City_3.jpg" alt="City_3">
-                <h4>Jaipur</h4>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="fast-food-outline"></ion-icon> 6500+ happy users
-                </div>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="beer-outline"></ion-icon> 65+ chefs
-                </div>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="logo-twitter"></ion-icon><a href="#">omnifood_tw</a>
-                </div>
-            </div>
-
-            <div class="city-container">
-                <img src="images/City_4.jpg" alt="City_4">
-                <h4>Gujarat</h4>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="fast-food-outline"></ion-icon> 6500+ happy users
-                </div>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="beer-outline"></ion-icon> 65+ chefs
-                </div>
-                <div class="city-icon">
-                    <ion-icon class="city-icon-ion" name="logo-twitter"></ion-icon><a href="#">omnifood_tw</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Customer Review Section -->
-    <section class="customer-review-section" data-aos="fade-up" data-aos-duration="4000">
-        <h3>Customer Reviews</h3>
-
-        <p>2000+ Customer provide review</p>
-        <div class="customer-review">
-            <p>"The food from Omnifood is absolutely delicious! The Delhi chefs craft every dish with love. My favorite is the spicy paneer tikka – perfectly balanced flavors!"</p>
-            <img src="images/User_1.jpg" alt="User 1">
-        </div>
-        <div class="customer-review">
-            <p>"I ordered a Gujarati thali, and it was a burst of authentic flavors! The delivery was quick, and the packaging kept everything fresh. Highly recommend!"</p>
-            <img src="images/User_2.jpg" alt="User 1">
-        </div>
-    </section>
-
-    <!-- Form feedback section -->
-
-    <section class="form-feedback-section" data-aos="fade-up" data-aos-duration="4000">
-    <div class="feedback-point">
-        <h3>We're Happy To Hear From You</h3>
-    </div>
-    <div class="feedback-point feedback-point-second-one">
-        <form class="feedback-form">
-            <div class="feedback-point-inner-portion">
-                <div class="form-box">
-                    <label for="name">Name:-</label>
-                </div>
-                <div class="form-box">
-                    <input type="text" placeholder="Your Name" id="name" name="name" required>
-                </div>
-            </div>
-            <div class="feedback-point-inner-portion">
-                <div class="form-box">
-                    <label for="email">Email:-</label>
-                </div>
-                <div class="form-box">
-                    <input type="email" placeholder="Your Email" id="email" name="email" required>
-                </div>
-            </div>
-            <div class="feedback-point-inner-portion">
-                <div class="form-box form-box-find">
-                    <label for="message">How did you find us:-</label>
-                </div>
-                <div class="form-box">
-                    <select name="find-us" id="find-us">
-                      <option value="Friends">Friends</option>
-                      <option value="Friends">Adverting</option>
-                      <option value="Friends">Search engine</option>
-                      <option value="Friends">Other</option>
-                    </select>
-                </div>
-            </div>
-            <div class="feedback-point-inner-portion">
-                <div class="form-box">
-                    <label for="message">Newsletter:-</label>
-                </div>
-                <div class="form-box ">
-                   <input type="checkbox" name="Newsletter" id="Newsletter" checked>
-                </div>
-            </div>
-            <div class="feedback-point-inner-portion">
-                <div class="form-box form-box-1">
-                    <label for="message">Message:-</label>
-                </div>
-                <div class="form-box form-box-2">
-                    <textarea placeholder="Your Feedback" id="message" name="message" required cols="26" rows="10"></textarea>
-                </div>
-            </div>
-            <div class="feedback-point-inner-portion">
-              <button type="submit">Submit</button>
-            </div>
+  <div class="container">
+    <div class="input-container">
+      <% if(showUpdate){ %>
+        <form action="/updateData/<%= editId %>" onsubmit="inputdata(event)" method="post" class="UpdateInputContainer">
+          <input type="text" name="updateDatatext" id="textInput" value="<%= data.find(d => d._id == editId)?.textinputData %>" placeholder="Enter your update secret here">
+          <button><ion-icon name="arrow-up-outline"></ion-icon></button>
         </form>
+          
+      <%}else{ %>
+      <form action="/textData" name="formTextInputData" onsubmit="inputdata(event)" method="POST" id="inputfield" class="inputfield">
+        <input type="text" id="textInput" name="text" placeholder="Enter your secrect Here">
+        <button><ion-icon name="arrow-up-outline"></ion-icon></button>
+      </form>
+      <% } %>
     </div>
-</section>
-<footer>
-  <div class="footer-inner-part">
-    <ul class="footer-nav">
-      <li><a href="#">About us</a></li>
-      <li><a href="#">Blog</a></li>
-      <li><a href="#">Press us</a></li>
-      <li><a href="#">IOS App</a></li>
-      <li><a href="#">Anroid App</a></li>
-    </ul>
-    <ul class="row-inline">
-      <li><ion-icon name="logo-facebook"></ion-icon></li>
-      <li><ion-icon name="logo-instagram"></ion-icon></li>
-      <li><ion-icon name="logo-twitter"></ion-icon></li>
-      <li><ion-icon name="logo-google"></ion-icon></li>
-     </ul>
+
+    <div class="secrect-container">
+        <a href="#" id="lockButton"><ion-icon name="lock-closed-outline" id="lockIcon"></ion-icon></a>
+    </div>
+
+  </div>
+
+  <div class="SecondContainer">
+    <div class="textbox">
+      <h2>Your Secrets</h2>
+    </div>
+    <div class="Innerbox">
+        <div class="InnerSecretsData">
+          
+            <% for(var i = 0; i < data.length; i++){ %>
+            <div class="secret-item">
+              <p class="secret-text"><%= data[i].textinputData %></p>
+            
+                <div class="actions">
+
+                  
+                    <a class="edit" href="/edithome/<%= data[i]._id %>">Edit<ion-icon name="create-sharp" ></ion-icon></a>
+                  
+
+                  
+                    <a class="delete" href="/deletehome/<%=data[i]._id %>">Delete<ion-icon name="trash"></ion-icon></a>
+                  
+                    
+                </div>
+            
+            </div>
+            
+          
+
+          <% } %>
+        </div>
+    </div>
+  </div>
+
+
+
+
+ 
+  <script>
+
+    // icons change
+    const icon = document.getElementById("lockIcon");
+    const texts = document.querySelectorAll(".secret-text");
+    let isLocked = false;
+
+    texts.forEach(item => {
+        item.setAttribute("data-original", item.textContent);
+    });
+
+    document.getElementById("lockButton").addEventListener("click", (e) => {
+      e.preventDefault();
+      isLocked = !isLocked;
+
+      if(isLocked){
+        icon.setAttribute("name", "lock-closed-outline");
+
+        texts.forEach(item => {
+          const original = item.getAttribute("data-original");
+          item.textContent = "*".repeat(original.length);
+        });
+
+      }else{
+        icon.setAttribute("name", "lock-open-outline");
+
+        texts.forEach(item => {
+          item.textContent = item.getAttribute("data-original");
+        });
+      }   
+    });
+
+    //if input box empty
+    function inputdata(e) {
+      const inputBoxData = document.getElementById("textInput")
+      
+      if(inputBoxData.value.trim() === ""){
+      e.preventDefault();
+      alert("plz provide the valid data");
+    }
+    }
     
-  </div>
-  
-     
-  
-  <div class="row-footer">
-    <p>Copyright &copy; 2015 by omnifood. All right reserved by Apna Bhojnalay</p>
-  </div>
-
-</footer>
-
-  </body>
+    
+  </script>
+</body>
 </html>
