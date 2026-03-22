@@ -125,7 +125,7 @@ node_modules/ → Automatically created when you run npm install
 
 public/ → Put CSS, frontend JS, images here
 
-views/ → Login, signup, dashboard pages
+views/ → Login, signup, home page
 
 index.js → Main backend server file
 
@@ -135,7 +135,7 @@ README.md → GitHub description file
 
 <h2>⚙️ Installation & Setup</h2>
 1️⃣ Clone the repository
-git clone https://github.com/Jay8262-rgb/FullStack_WebBaseComplete_Authentication_FoodOrdering_Application.git
+git clone https://github.com/Jay8262-rgb/FullStack_WebBaseComplete_Authentication.git
 
 <h2>Go into the folder</h2>
 cd Your Own folder name
