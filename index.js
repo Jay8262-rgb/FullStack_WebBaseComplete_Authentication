@@ -159,7 +159,7 @@ const homeSchema = new mongoose.Schema({
     textinputData : String,
     isLocked: {
         type: Boolean,
-        default: false
+        default: true
     },
     CreatedAt : {
         type: Date,

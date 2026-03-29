@@ -81,12 +81,12 @@
     // icons change
     const icon = document.getElementById("lockIcon");
     const texts = document.querySelectorAll(".secret-text");
-    let isLocked = <%= isLocked %>;
+    let isLocked = <%= typeof isLocked !=='undefined' ? isLocked : true %>;
 
     texts.forEach(item => {
         item.setAttribute("data-original", item.textContent);
     });
-    //for reload
+
     window.addEventListener("DOMContentLoaded", ()=>{
       if(isLocked){
         icon.setAttribute("name", "lock-closed-outline");
@@ -96,8 +96,10 @@
           item.textContent = "*".repeat(original.length);
         });
       }else{
-        icon.setAttribute("name", "lock-open-outline");
+        icon.setAttribute("name", "lock-open-outline")
       }
+
+      isLocked = true;
     })
 
     document.getElementById("lockButton").addEventListener("click", async (e) => {
