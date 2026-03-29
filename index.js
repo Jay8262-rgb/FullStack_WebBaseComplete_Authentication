@@ -5,6 +5,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const Db = require('mongodb/lib/db');
 // const { match } = require('node:assert');
 // const jwt = require("jsonwebtoken");
 
@@ -69,8 +70,17 @@ app.post("/", async (req, res) => {
         email: req.body.email,
         password: hashPssword,
     });
-    await newUser.save();
+
+    const findUser = await item.findOne({ email : req.body.email });
+
+    if(findUser){
+        return res.send("User are Already Exist!!")
+    }else{
+        await newUser.save();
+    }
+
     res.redirect("/?from=login&signup=success");
+
     }catch(err){
         console.log(err);
     }
