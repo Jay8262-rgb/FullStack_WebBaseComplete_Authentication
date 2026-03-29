@@ -49,7 +49,7 @@
           
             <% for(var i = 0; i < data.length; i++){ %>
             <div class="secret-item">
-              <p class="secret-text"><%= data[i].textinputData %></p>
+              <p class="secret-text" ><%= data[i].textinputData %></p>
             
                 <div class="actions">
 
@@ -81,13 +81,26 @@
     // icons change
     const icon = document.getElementById("lockIcon");
     const texts = document.querySelectorAll(".secret-text");
-    let isLocked = false;
+    let isLocked = <%= isLocked %>;
 
     texts.forEach(item => {
         item.setAttribute("data-original", item.textContent);
     });
+    //for reload
+    window.addEventListener("DOMContentLoaded", ()=>{
+      if(isLocked){
+        icon.setAttribute("name", "lock-closed-outline");
 
-    document.getElementById("lockButton").addEventListener("click", (e) => {
+        texts.forEach(item => {
+          const original = item.getAttribute("data-original");
+          item.textContent = "*".repeat(original.length);
+        });
+      }else{
+        icon.setAttribute("name", "lock-open-outline");
+      }
+    })
+
+    document.getElementById("lockButton").addEventListener("click", async (e) => {
       e.preventDefault();
       isLocked = !isLocked;
 
@@ -102,10 +115,18 @@
       }else{
         icon.setAttribute("name", "lock-open-outline");
 
-        texts.forEach(item => {
-          item.textContent = item.getAttribute("data-original");
-        });
-      }   
+          texts.forEach(item => {
+            item.textContent = item.getAttribute("data-original");
+          });
+      } 
+      
+      await fetch("/toggleLock", {
+        method: "POST",
+        headers: {
+          "Content-type" : "application/json"
+        },
+        body: JSON.stringify({ isLocked })
+      });
     });
 
     //if input box empty

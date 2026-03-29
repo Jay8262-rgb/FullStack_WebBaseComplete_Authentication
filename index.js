@@ -129,7 +129,11 @@ app.get('/home', async (req, res)=>{
                 userId : req.session.userId
             });
 
-            res.render("home" , {data : userData, showUpdate: false});
+            res.render("home" , {
+                data : userData,
+                showUpdate: false,
+                isLocked: userData.length > 0 ? userData[0].isLocked : false
+            });
         }catch(err){
             console.log(err);
         }
@@ -137,6 +141,7 @@ app.get('/home', async (req, res)=>{
     }
 
 });
+
 
 
 
@@ -152,6 +157,10 @@ const homeSchema = new mongoose.Schema({
         ref: "second"
     },
     textinputData : String,
+    isLocked: {
+        type: Boolean,
+        default: false
+    },
     CreatedAt : {
         type: Date,
         default: Date.now
@@ -160,6 +169,23 @@ const homeSchema = new mongoose.Schema({
 
 const homeValue = mongoose.model("homeData", homeSchema);
 
+//toggalroute
+
+app.get("/toggalLock", async (req,res)=>{
+    const { isLocked } = req.body;
+
+    try{
+        await homeValue.updateMany(
+            { userId: req.session.userId },
+            { isLocked: isLocked}
+        );
+        
+        res.json({ success: true });
+    } catch (err){
+        console.log(err);
+        res.json({ success: false });
+    }
+});
 
 //textDataRouting
 app.post("/textData" , async (req, res)=>{
